@@ -12,17 +12,17 @@ call:copyTemplateFileNumberOfTimes "SIR" 2
 call:copyTemplateFileNumberOfTimes "TERM" 2
 goto:eof
 
-:copyTemplateFileNumberOfTimes <filePrefix> <numberOfTimesToCopy>
-SET "ORIGINAL_FILE_NAME=Audit-Email-Template-%~1.docx"
+:copyTemplateFileNumberOfTimes <accountType> <numberOfTimesToCopy>
+SET "TEMPLATE_FILE_NAME=Audit-Email-Template-%~1.docx"
 
-if not exist "%ORIGINAL_FILE_NAME%" (
-    echo "Cannot find %ORIGINAL_FILE_NAME%"
+if not exist "%TEMPLATE_FILE_NAME%" (
+    echo "Cannot find %TEMPLATE_FILE_NAME%"
     goto:eof
 )
 
 for /l %%i in (1,1,%~2) do (
     if not exist "%year%-Audit-Email-%~1-%%i.docx" (
-        copy "%ORIGINAL_FILE_NAME%" "%year%-Audit-Email-%~1-%%i.docx"
+        copy "%TEMPLATE_FILE_NAME%" "%year%-Audit-Email-%~1-%%i.docx"
     )
 )
 goto:eof
