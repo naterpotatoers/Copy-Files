@@ -1,5 +1,9 @@
 @echo off
-@REM This script will copy the following template files a specified number of times.
+@REM Copies template files a specified number of times.
+@REM Important notes:
+@REM - template files must be in the same directory as this script
+@REM - the template files must be named as follows:
+@REM   - Audit-Email-Template-(abbreviation).docx
 
 SET "year=2024"
 call:copyTemplateFileNumberOfTimes "1915i" 2
